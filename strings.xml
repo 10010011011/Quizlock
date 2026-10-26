@@ -1,0 +1,4 @@
+<resources>
+  <string name="app_name">QuizLock</string>
+  <string name="svc_desc">Detects when a locked app opens so QuizLock can ask its question and password.</string>
+</resources>

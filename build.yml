@@ -1,0 +1,22 @@
+name: Build APK
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Arrange files
+        run: |
+          mkdir -p app/src/main/java/com/example/quizlock app/src/main/res/xml app/src/main/res/values
+          mv app_build.gradle app/build.gradle
+          mv AndroidManifest.xml app/src/main/
+          mv *.kt app/src/main/java/com/example/quizlock/
+          mv accessibility.xml app/src/main/res/xml/
+          mv strings.xml app/src/main/res/values/
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 17 }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: 8.9 }
+      - run: gradle assembleDebug
+      - uses: actions/upload-artifact@v4
+        with: { name: QuizLock-apk, path: app/build/outputs/apk/debug/*.apk }

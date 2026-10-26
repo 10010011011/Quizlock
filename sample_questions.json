@@ -1,0 +1,5 @@
+[
+  {"text": "What is 7 x 8?", "options": ["54", "56", "64"], "answer": 2},
+  {"text": "Compute the square root of 2 (3 decimals).", "answer": "1.41421356"},
+  {"text": "Which shape is shown?", "image": "shape.png", "options": ["Circle", "Square"], "answer": 1}
+]
